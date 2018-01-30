@@ -21,7 +21,7 @@ public class autoRunShooterForTime extends Command {
 	protected void initialize() {
 		timer.reset();
 		timer.start();
-		Robot.shooter.startShooter();
+		//Robot.shooter.startShooter();
 		Robot.agitator.startAgitator();
 	}
 	
@@ -30,7 +30,7 @@ public class autoRunShooterForTime extends Command {
 	protected void execute() {}
 	
 	protected void end() {
-		Robot.shooter.stopShooter();
+		//Robot.shooter.stopShooter();
 		Robot.agitator.stopAgitator();
 	}
 	

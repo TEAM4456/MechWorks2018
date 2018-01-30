@@ -4,6 +4,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class autoMiddle extends CommandGroup {
 	
-	public autoMiddle() { addSequential(new autoDistance_VBus(4800, 0.4, true)); }
-	
+	//public autoMiddle() { addSequential(new autoDistance_VBus(4800, 0.4, true)); }
+	public autoMiddle() {
+
+		addSequential(new armMovement(4800));
+	}
+
 }

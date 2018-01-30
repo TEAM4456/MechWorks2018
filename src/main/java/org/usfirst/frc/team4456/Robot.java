@@ -21,7 +21,8 @@ public class Robot extends IterativeRobot {
 	public static Drive drive;
 	public static Intake intake;
 	public static Lidar lidar;
-	public static Shooter shooter;
+	//public static Shooter shooter;
+	public static ArmControl armControl;
 	public static Winch winch;
 	
 	boolean enabledInitialized = false;
@@ -29,7 +30,7 @@ public class Robot extends IterativeRobot {
 	//Command homeDeflector;
 	Command autonomousCommand;
 	
-	SendableChooser autonomousChooser;
+	SendableChooser<Command> autonomousChooser;
 	
 	public void robotInit() {
 		
@@ -42,8 +43,9 @@ public class Robot extends IterativeRobot {
 		deflector = new Deflector();
 		drive = new Drive();
 		intake = new Intake();
-		/*lidar = new Lidar();*/
-		shooter = new Shooter();
+		//lidar = new Lidar();
+		//shooter = new Shooter();
+		armControl = new ArmControl();
 		winch = new Winch();
 		
 		controls = new Controls();
@@ -54,7 +56,7 @@ public class Robot extends IterativeRobot {
 		
 		autonomousCommand = new autoMiddle(); // default value, prevents null pointer exception
 		
-		autonomousChooser = new SendableChooser();
+		autonomousChooser = new SendableChooser<Command>();
 		autonomousChooser.addDefault("Auto Middle", new autoMiddle());
 		autonomousChooser.addObject("Auto Shoot Blue", new autoShootBlue());
 		autonomousChooser.addObject("Auto Shoot Red", new autoShootRed());
@@ -70,11 +72,12 @@ public class Robot extends IterativeRobot {
 			SmartDashboard.putNumber("LiDAR Distance", lidar.getDistance());
 		}
 		*/
-		SmartDashboard.putBoolean("Deflector Switch", RobotMap.deflectorSwitch.get()/*not correct*/);
+		SmartDashboard.putBoolean("Deflector Switch", RobotMap.deflectorSwitch.get());
 		SmartDashboard.putNumber("Deflector Encoder", RobotMap.deflectorTalon.getSelectedSensorPosition(0));
 		SmartDashboard.putNumber("leftDriveTalon1", RobotMap.leftDriveTalon1.getSelectedSensorPosition(0));
 		SmartDashboard.putNumber("rightDriveTalon1", RobotMap.rightDriveTalon1.getSelectedSensorPosition(0));
-		SmartDashboard.putNumber("Actual Shooter RPM", RobotMap.shooterTalon.get());
+		//SmartDashboard.putNumber("Actual Shooter RPM", RobotMap.shooterTalon.get());
+		SmartDashboard.putNumber("ArmTalon1", RobotMap.armTalon1.getSelectedSensorPosition(0));
 		SmartDashboard.putNumber("Navx yaw", RobotMap.navx.getYaw());
 		SmartDashboard.putNumber("Navx x-displacement", RobotMap.navx.getDisplacementX());
 		
@@ -100,8 +103,8 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic() {}
 	
 	public void autonomousInit() {
-		//autonomousCommand = (Command)autonomousChooser.getSelected();
-		//autonomousCommand.start();
+		autonomousCommand = (Command)autonomousChooser.getSelected();
+		autonomousCommand.start();
 	}
 	public void autonomousPeriodic() {}
 	

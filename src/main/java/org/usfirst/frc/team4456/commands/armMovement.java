@@ -19,14 +19,20 @@ public class armMovement extends Command {
 
         protected void initialize() {}
 
-        protected boolean isFinished() { return finished; }
+        protected boolean isFinished() {
+            return finished;
+        }
 
         protected void execute() {
             Robot.armControl.ArmTalon1.setSelectedSensorPosition((int)setPoint,0,0);
         }
 
-        protected void end() { Robot.drive.robotDrive.tankDrive(0, 0); }
+        protected void end() {
+            Robot.drive.robotDrive.tankDrive(0, 0);
+        }
 
-        protected void interrupted() { end(); }
+        protected void interrupted() {
+            end();
+        }
     }
 

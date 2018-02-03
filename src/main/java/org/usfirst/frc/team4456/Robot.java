@@ -24,6 +24,7 @@ public class Robot extends IterativeRobot {
 	//public static Shooter shooter;
 	public static ArmControl armControl;
 	public static Winch winch;
+	public static WheelControl wheelControl;
 	
 	boolean enabledInitialized = false;
 	
@@ -47,7 +48,8 @@ public class Robot extends IterativeRobot {
 		//shooter = new Shooter();
 		armControl = new ArmControl();
 		winch = new Winch();
-		
+		wheelControl = new WheelControl();
+
 		controls = new Controls();
 		
 		//homeDeflector = new homeDeflector();

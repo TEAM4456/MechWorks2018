@@ -56,6 +56,9 @@ public class RobotMap {
 		armTalon1.set(ControlMode.Position, 0);
 		armTalon1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
 		//armTalon1.setPID(.45, 0, 0);
+		armTalon1.config_kP(0, .45, 0);
+		armTalon1.config_kI(0, 0, 0);
+		armTalon1.config_kD(0, 0, 0);
 		armTalon1.setInverted(true);
 		//armTalon1.setVoltageCompensationRampRate(0);
 		armTalon1.configVoltageCompSaturation(0, 0);

@@ -22,7 +22,7 @@ public class Robot extends IterativeRobot {
 	public static Intake intake;
 	public static Lidar lidar;
 	//public static Shooter shooter;
-	public static ArmControl armControl;
+	//public static ArmControl armControl;
 	public static Winch winch;
 	public static WheelControl wheelControl;
 	
@@ -46,7 +46,7 @@ public class Robot extends IterativeRobot {
 		intake = new Intake();
 		//lidar = new Lidar();
 		//shooter = new Shooter();
-		armControl = new ArmControl();
+		//armControl = new ArmControl();
 		winch = new Winch();
 		wheelControl = new WheelControl();
 
@@ -80,6 +80,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("rightDriveTalon1", RobotMap.rightDriveTalon1.getSelectedSensorPosition(0));
 		//SmartDashboard.putNumber("Actual Shooter RPM", RobotMap.shooterTalon.get());
 		SmartDashboard.putNumber("ArmTalon1", RobotMap.armTalon1.getSelectedSensorPosition(0));
+		SmartDashboard.putNumber("ArmTalon1 get", RobotMap.armTalon1.get());
 		SmartDashboard.putNumber("Navx yaw", RobotMap.navx.getYaw());
 		SmartDashboard.putNumber("Navx x-displacement", RobotMap.navx.getDisplacementX());
 		

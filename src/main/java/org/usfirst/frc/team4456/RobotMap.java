@@ -53,16 +53,27 @@ public class RobotMap {
 		*/
 
 		armTalon1 = new WPI_TalonSRX (3);
-		armTalon1.set(ControlMode.Position, 0);
+		//armTalon1.set(ControlMode.Position, 0);
 		armTalon1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
+		armTalon1.set(ControlMode.Position, 0);
+		armTalon1.setSelectedSensorPosition(0, 0, 10);
+		
+		armTalon1.configNominalOutputForward(0, 10);
+		armTalon1.configNominalOutputReverse(0, 10);
+	    armTalon1.configPeakOutputForward(0.1, 10);
+		armTalon1.configPeakOutputReverse(-0.1, 10);
 		//armTalon1.setPID(.45, 0, 0);
-		armTalon1.config_kP(0, .45, 0);
-		armTalon1.config_kI(0, 0, 0);
-		armTalon1.config_kD(0, 0, 0);
+		armTalon1.config_kF(0, 0, 10);
+		armTalon1.config_kP(0, 0.1, 10);
+		armTalon1.config_kI(0, 0, 10);
+		armTalon1.config_kD(0, 0, 10);
+		armTalon1.setSensorPhase(true);
 		armTalon1.setInverted(true);
+		//armTalon1.set(armTalon1.get());
+		System.out.println("armTalon position: " + armTalon1.get());
 		//armTalon1.setVoltageCompensationRampRate(0);
-		armTalon1.configVoltageCompSaturation(0, 0);
-		armTalon1.setInverted(true);
+		//armTalon1.configVoltageCompSaturation(0, 0);
+		//armTalon1.setInverted(true);
 
 
 		winchTalon = new WPI_TalonSRX (8);

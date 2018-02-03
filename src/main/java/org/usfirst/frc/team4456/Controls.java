@@ -34,7 +34,7 @@ public class Controls {
 		yButton.toggleWhenPressed(new toggleWinchReverse());
 		JoystickButton leftBumper = new JoystickButton(joystick, 5);
 		//leftBumper.whileHeld(new lowerDeflector());
-		leftBumper.whenPressed(new armMovement(4800));
+		//leftBumper.whenPressed(new armMovement(4800));
 		JoystickButton rightBumper = new JoystickButton(joystick, 6);
 		//rightBumper.whileHeld(new raiseDeflector());
 		JoystickButton backButton = new JoystickButton(joystick, 7);

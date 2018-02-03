@@ -16,9 +16,10 @@ public class turnWheelForward extends Command {
 	
 	protected void initialize() { finished = false; }
 	
-	protected boolean isFinished() { return !finished; }
+	protected boolean isFinished() { return finished; }
 	
 	protected void execute() {
+		System.out.println("turnWheelForward");
 		Robot.wheelControl.turnForward();
 		finished = true;
 	}
